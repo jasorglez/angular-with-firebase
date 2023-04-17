@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 import { functions } from 'src/app/helpers/functions';
 import { Ilogin } from 'src/app/interface/ilogin';
 import { LoginService } from 'src/app/services/login.service';
+import { EmpresasService } from 'src/app/services/empresas.service';
+
 import { alerts } from 'src/app/helpers/alerts';
 import { Router } from '@angular/router';
+import { NavBarComponent } from 'src/app/shared/nav-bar/nav-bar.component';
 
 
 @Component({
@@ -32,7 +37,10 @@ export class LoginComponent implements OnInit {
 
 	formSubmitted = false;
 
-	constructor(private form: FormBuilder, private loginService: LoginService, private router: Router) { }
+  valorcapturado = '' ;
+
+	constructor(private form: FormBuilder, private loginService: LoginService, private empresasService : EmpresasService,
+    private router: Router) { }
 
 	ngOnInit(): void {
 	}
@@ -46,11 +54,10 @@ export class LoginComponent implements OnInit {
 		/*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
-    console.log("this.f", this.f);
-
-
 
 		this.formSubmitted = true;
+
+
 
 		/*=============================================
 		Validamos que el formulario esté correcto
@@ -61,7 +68,10 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 
-		/*=============================================
+ // Atrapo la variable para enviarla al servicio
+    this.empresasService.setEmail(this.f.controls.email.value );
+
+    /*=============================================
 		Capturamos la información del formulario en la interfaz
 		=============================================*/
 
@@ -85,7 +95,7 @@ export class LoginComponent implements OnInit {
 				Entramos al sistema
 				=============================================*/
 
-				this.router.navigateByUrl("/");
+        this.router.navigateByUrl("/");
 
 			},
 

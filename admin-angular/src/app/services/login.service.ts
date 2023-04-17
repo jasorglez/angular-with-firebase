@@ -19,16 +19,13 @@ export class LoginService {
 
 	login(data: Ilogin){
 
-
-
 		return this.http.post(environment.urlLogin, data).pipe(
 			map((resp:any)=>{
 
 				/*=============================================
 				Capturamos el idToken y refreshToken
 				=============================================*/
-        console.log("resp", resp);
-				localStorage.setItem('token', resp.idToken);
+        localStorage.setItem('token', resp.idToken);
 				localStorage.setItem('refreshToken', resp.refreshToken);
 			})
 

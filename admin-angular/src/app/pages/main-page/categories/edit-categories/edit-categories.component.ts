@@ -27,13 +27,13 @@ export class EditCategoriesComponent implements OnInit {
 
 		icon:['', Validators.required],
 		image:''
-		
+
 	})
 
 	/*=============================================
 	Validación personalizada
 	=============================================*/
-	
+
 	get image() { return this.f.controls.image }
 	get icon() { return this.f.controls.icon; }
 
@@ -41,7 +41,7 @@ export class EditCategoriesComponent implements OnInit {
 	Variable que valida el envío del formulario
 	=============================================*/
 
-	formSubmitted = false;	
+	formSubmitted = false;
 
 	/*=============================================
 	Visualizar del nombre de la categoría
@@ -89,7 +89,9 @@ export class EditCategoriesComponent implements OnInit {
 
 	loadData = false;
 
-	constructor(private form: FormBuilder, private categoriesService: CategoriesService, private imagesService: ImagesService, public dialogRef: MatDialogRef<EditCategoriesComponent>,  @Inject(MAT_DIALOG_DATA) public data:  IDialogData) { }
+	constructor(private form: FormBuilder, private categoriesService: CategoriesService,
+    private imagesService: ImagesService, public dialogRef: MatDialogRef<EditCategoriesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:  IDialogData) { }
 
 	ngOnInit(): void {
 
@@ -98,7 +100,7 @@ export class EditCategoriesComponent implements OnInit {
 
 			(resp:any)=>{
 
-				this.icon.setValue(resp.icon);			
+				this.icon.setValue(resp.icon);
 				this.iconView = `<i class="${resp.icon}"></i>`;
 
 				this.imgTemp = `${environment.urlFiles}categories/${resp.image}`;
@@ -139,7 +141,7 @@ export class EditCategoriesComponent implements OnInit {
 		=============================================*/
 
 		if(this.f.invalid){
-						
+
 			return;
 		}
 
@@ -149,7 +151,8 @@ export class EditCategoriesComponent implements OnInit {
 
 		if(this.uploadFile){
 
-			this.imagesService.uploadImage(this.uploadFile, "categories", "", 170, 170, this.nameImage).subscribe((resp:any)=>{
+			this.imagesService.uploadImage(this.uploadFile, "categories",
+      "", 170, 170, this.nameImage).subscribe((resp:any)=>{
 
 	    		if(resp.status == 200){
 
@@ -189,18 +192,18 @@ export class EditCategoriesComponent implements OnInit {
 		Capturamos la información del formulario en la interfaz
 		=============================================*/
 
-		const dataCategory: Icategories = {	
-			
+		const dataCategory: Icategories = {
+
 			icon:icon,
 			image: this.nameImage,
 			name:this.nameView,
 			title_list:JSON.stringify(this.titleView),
-			url:this.urlInput, 
+			url:this.urlInput,
 			view:Number(this.view),
 			state:this.state
 
 		}
-		
+
 		/*=============================================
 		Guardar en base de datos la info de la categoría
 		=============================================*/
@@ -209,17 +212,17 @@ export class EditCategoriesComponent implements OnInit {
 
 			resp=>{
 
-				this.loadData = false;		
+				this.loadData = false;
 
 				this.dialogRef.close('save');
 
-				alerts.basicAlert("Ok", 'The category has been saved', "success")			
+				alerts.basicAlert("Ok", 'The category has been saved', "success")
 
 			},
 
 			err =>{
 
-				this.loadData = false;		
+				this.loadData = false;
 
 				alerts.basicAlert("Error", 'Category saving error', "error")
 
@@ -237,7 +240,7 @@ export class EditCategoriesComponent implements OnInit {
 	invalidField(field:string){
 
 		return functions.invalidField(field, this.f, this.formSubmitted);
-		
+
 	}
 
 	/*=============================================
@@ -262,11 +265,11 @@ export class EditCategoriesComponent implements OnInit {
 	=============================================*/
 
 	viewIcon(e:any){
-		
+
 		this.iconView = e.target.value;
 
-		e.target.value = this.f.controls.icon.value.split('"')[1];	
-	
+		e.target.value = this.f.controls.icon.value.split('"')[1];
+
 	}
 
 }

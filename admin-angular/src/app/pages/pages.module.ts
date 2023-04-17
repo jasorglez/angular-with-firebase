@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { Error404Component } from './main-page/error404/error404.component';
 import { PlaintComponent } from './main-page/plaint/plaint.component';
 import { ComunicacComponent } from './main-page/comunicac/comunicac.component';
+import { BranchsComponent } from './main-page/branchs/branchs.component';
 
 
 

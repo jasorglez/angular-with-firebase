@@ -1,9 +1,9 @@
 <mat-dialog-content>
-  
+
   <div class="card card-warning">
-    
+
     <div class="card-header">
-    	
+
     	<h2 class="card-title mb-0">New Category</h2>
         <button type="button" class="close" mat-dialog-close >&times;</button>
 
@@ -17,18 +17,18 @@
 	    <div class="card-body">
 
             <ng-container *ngIf="!loadData">
-	    	
+
     	    	<!-- Icon -->
                 <div class="form-group">
-                	
+
                 	<label for="InputIcon">Icon (<a href="https://linearicons.com/free" target="_blank">Available icons</a>)</label>
 
                     <div class="input-group">
 
-                    	<input 
-                    	type="text" 
+                    	<input
+                    	type="text"
                     	id="InputIcon"
-                    	class="form-control" 
+                    	class="form-control"
                     	placeholder="Icon"
                     	formControlName="icon"
                     	[ngClass]="{'is-invalid': invalidField('icon')}"
@@ -48,7 +48,7 @@
 
                 <!-- Image -->
                 <div class="form-group">
-                	
+
                 	<label for="customFile">
                 		<img *ngIf="!imgTemp" src="../../../../../assets/img/categories/170x170.jpg" class="img-fluid">
                         <img *ngIf="imgTemp" [src]="imgTemp" class="img-fluid">
@@ -56,10 +56,10 @@
 
                 	<div class="custom-file">
 
-                		<input 
-                        type="file" 
-                        class="custom-file-input" 
-                        id="customFile" 
+                		<input
+                        type="file"
+                        class="custom-file-input"
+                        id="customFile"
                         formControlName="image"
                         [ngClass]="{'is-invalid': invalidField('image')}"
                         (change)="validateImage($event)">
@@ -73,21 +73,22 @@
                         <small class="mt-2">170px * 170px size | jpg or png format</small>
 
                 	</div>
-    	
+
                 </div>
 
                 <!-- Name -->
                 <div class="form-group">
-                 	
+
                 	<label for="InputName">Name</label>
 
-                	<input 
-                	type="text" 
-                	id="InputName" 
-                	class="form-control" 
+                	<input
+                	type="text"
+                	id="InputName"
+                	class="form-control"
                 	placeholder="Name"
                 	formControlName="name"
-                	[ngClass]="{'is-invalid': invalidField('name') || name.invalid && name.errors?.pattern || name.invalid && name.errors?.category }">
+                	[ngClass]="{'is-invalid': invalidField('name') || name.invalid && name.errors?.pattern ||
+                  name.invalid && name.errors?.category }">
 
                 	<span class="invalid-feedback" *ngIf="name.invalid && name.errors?.required">Please provide a name</span>
                     <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.pattern">Please write the name correctly</span>
@@ -97,35 +98,34 @@
 
                 <!-- Url -->
                 <div class="form-group">
-                 	
+
                 	<label for="InputUrl">Url</label>
 
-                	<input 
-                	type="text" 
-                	id="InputUrl" 
-                	class="form-control" 
+                	<input
+                	type="text"
+                	id="InputUrl"
+                	class="form-control"
                 	placeholder="Url"
-                    value="{{urlInput}}"
-                    readonly>
+                    value="{{urlInput}}">
 
                 </div>
 
                 <!-- Title List -->
                 <div class="form-group">
-                    
+
                     <label>Title List</label>
 
                     <div class="form-control"
                     [ngClass]="{'is-invalid': invalidField('titleList')}">
-                    
+
                         <mat-chip-list #chipList aria-label="Title List">
-                        
+
                             <mat-chip *ngFor="let title of titleList.value" [selectable]="selectable"
                              [removable]="removable" (removed)="remove(title)">
 
                                 {{title}}
                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                            
+
                             </mat-chip>
 
                             <input placeholder="New Title..."
@@ -133,7 +133,7 @@
                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                [matChipInputAddOnBlur]="addOnBlur"
                                (matChipInputTokenEnd)="add($event)">
-                        </mat-chip-list>    
+                        </mat-chip-list>
 
                     </div>
 
@@ -141,7 +141,7 @@
 
                     <span *ngIf="titleList.invalid && titleList.errors?.pattern" class="invalid-feedback">Write the Title List correctly</span>
 
-                </div>  	    
+                </div>
 
             </ng-container>
 
@@ -152,8 +152,8 @@
         </div>
 
 	    <div class="card-footer">
-	    	
-	    	
+
+
 	    	<button mat-dialog-close class="btn btn-secondary">Close</button>
 	    	<button  type="submit" class="btn btn-warning  float-right">Save</button>
 
@@ -162,6 +162,6 @@
     </form>
 
 
-  </div> 
+  </div>
 
 </mat-dialog-content>

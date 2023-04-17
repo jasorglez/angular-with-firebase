@@ -1,4 +1,5 @@
 export interface Iempresa {
+  idemp:number;
 	address:string;
 	city:string;
 	country:string;

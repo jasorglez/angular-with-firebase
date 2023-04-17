@@ -28,13 +28,18 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/config.ts"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+               "node_modules/firebase/firebase-app.js",
+               "node_modules/firebase/firebase-auth.js",
+               "node_modules/firebase/firebase-database.js"
+          ]
           },
           "configurations": {
             "production": {

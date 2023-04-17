@@ -27,14 +27,14 @@
           <div [hidden]="loadData" class="row mb-2">
 
             <div class="col-12 col-sm-6 col-xl-3 mr-auto">
-            
-              <button class="btn btn-block bg-gradient-warning" type="button" (click)="newCategory()">New Category</button> 
+
+              <button class="btn btn-block bg-gradient-warning" type="button" (click)="newCategory()">New Category</button>
 
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3 ml-auto">
-            
-              <input class="form-control" placeholder="Search" (keyup)="applyFilter($event)">   
+
+              <input class="form-control" placeholder="Search" (keyup)="applyFilter($event)">
 
             </div>
 
@@ -45,8 +45,9 @@
         <div class="card-body">
             <div class="mat-table-container">
 
-          <table [hidden]="loadData" mat-table [dataSource]="dataSource" multiTemplateDataRows matSort matSortActive="position" matSortDirection="asc" class="mat-elevation-z8 matTable-table">
-            
+          <table [hidden]="loadData" mat-table [dataSource]="dataSource" multiTemplateDataRows matSort matSortActive="position"
+          matSortDirection="asc" class="mat-elevation-z8 matTable-table">
+
             <!-- Position Column -->
             <ng-container matColumnDef="position">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
@@ -79,8 +80,8 @@
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef> Actions </th>
               <td mat-cell *matCellDef="let element">
-                
-                <button 
+
+                <button
                   class="btn btn-sm btn-warning mr-1"
                   (click)="expandedElement = expandedElement === element ? null : element">
                   <i class="fas fa-eye"></i>
@@ -90,14 +91,14 @@
                 class="btn btn-sm btn-dark mr-1"
                 (click)="editCategory(element.id)"
                 >
-                  <i class="fas fa-pencil-alt"></i>             
+                  <i class="fas fa-pencil-alt"></i>
                 </button>
 
                 <button
                 class="btn btn-sm btn-danger"
                 (click)="deleteCategory(element.id, element.name, element.image)"
                 >
-                  <i class="fas fa-trash"></i>             
+                  <i class="fas fa-trash"></i>
                 </button>
 
               </td>
@@ -108,52 +109,52 @@
               <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
                 <div class="example-element-detail"
                      [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
-                  
+
                   <ul class="pl-0">
 
                     <li class="py-2" *ngIf="screenSizeSM">
                       <img src="{{path}}categories/{{element.image}}" width="100">
                     </li>
-                    
+
                     <li class="py-2" *ngIf="screenSizeSM">
                       <span class="mx-2 text-muted">·</span>
-                      <strong class="mat-header-cell">Url:</strong> 
+                      <strong class="mat-header-cell">Url:</strong>
                       {{element.url}}
-                    </li>       
+                    </li>
 
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
-                      <strong class="mat-header-cell">Icon:</strong> 
+                      <strong class="mat-header-cell">Icon:</strong>
                       <i class="{{element.icon}}"></i>
                     </li>
 
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
-                      <strong class="mat-header-cell">Title List:</strong> 
+                      <strong class="mat-header-cell">Title List:</strong>
                       {{element.title_list |  jsonToString}}
                     </li>
 
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
-                      <strong class="mat-header-cell">View:</strong> 
+                      <strong class="mat-header-cell">View:</strong>
                     {{element.view}} </li>
 
                     <li class="py-1">
 
                       <div class="custom-control custom-switch">
 
-                        <input 
+                        <input
                         *ngIf="element.state == 'show'"
-                        type="checkbox" 
-                        class="custom-control-input" 
+                        type="checkbox"
+                        class="custom-control-input"
                         id="switch_{{element.id}}"
                         (change)="changeState($event)"
                         checked>
 
-                        <input 
+                        <input
                         *ngIf="element.state != 'show'"
-                        type="checkbox" 
-                        class="custom-control-input" 
+                        type="checkbox"
+                        class="custom-control-input"
                         id="switch_{{element.id}}"
                         (change)="changeState($event)"
                         >
@@ -165,7 +166,7 @@
                     </li>
 
                   </ul>
-                  
+
                 </div>
               </td>
             </ng-container>
@@ -186,11 +187,11 @@
           </table>
 
           <div *ngIf="loadData" class="text-center m-5">
-              
+
             <div class="spinner-border"></div>
 
           </div>
-         
+
 
         </div>
         </div>

@@ -27,7 +27,7 @@ export class NewCategoriesComponent implements OnInit {
 		image:['', Validators.required],
 		name:['', { validators: [Validators.required, Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*') ], asyncValidators: [this.isRepeatCategory()], updateOn: 'blur'}],
 		titleList:[[], [Validators.required,  Validators.pattern('["\\[\\]\\-\\,\\0-9a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')]]
-	
+
 	})
 
 	/*=============================================
@@ -71,16 +71,16 @@ export class NewCategoriesComponent implements OnInit {
 	=============================================*/
 
  	add(event: MatChipInputEvent): void {
-	    
+
 	    const input = event.input;
-	    
+
 	    const value = event.value;
 
 	    // Add our title list
 	    if ((value || '').trim()) {
-	      
-	      this.f.controls.titleList.value.push(value.trim());   
-	       
+
+	      this.f.controls.titleList.value.push(value.trim());
+
 	    }
 
 	    // Reset the input value
@@ -101,7 +101,7 @@ export class NewCategoriesComponent implements OnInit {
 
 	    if (index >= 0) {
 	       this.f.controls.titleList.value.splice(index, 1);
-	      
+
 	    }
 
 	    this.f.controls.titleList.updateValueAndValidity();
@@ -125,7 +125,8 @@ export class NewCategoriesComponent implements OnInit {
 
 	loadData = false;
 
-	constructor(private form: FormBuilder, private categoriesService: CategoriesService, private imagesService: ImagesService, public dialogRef: MatDialogRef<NewCategoriesComponent>) { }
+	constructor(private form: FormBuilder, private categoriesService: CategoriesService, private imagesService: ImagesService,
+    public dialogRef: MatDialogRef<NewCategoriesComponent>) { }
 
 	ngOnInit(): void {
 	}
@@ -149,7 +150,7 @@ export class NewCategoriesComponent implements OnInit {
 		=============================================*/
 
 		if(this.f.invalid){
-						
+
 			return;
 		}
 
@@ -165,13 +166,13 @@ export class NewCategoriesComponent implements OnInit {
 				Capturamos la información del formulario en la interfaz
 				=============================================*/
 
-				const dataCategory: Icategories = {	
+				const dataCategory: Icategories = {
 
 					icon:this.f.controls.icon.value.split('"')[1],
 					image:resp.result,
 					name:this.f.controls.name.value,
 					title_list:JSON.stringify(this.f.controls.titleList.value),
-					url:this.urlInput, 
+					url:this.urlInput,
 					view:0,
 					state:"hidden"
 
@@ -185,17 +186,17 @@ export class NewCategoriesComponent implements OnInit {
 
 					resp=>{
 
-						this.loadData = false;		
+						this.loadData = false;
 
 						this.dialogRef.close('save');
 
-						alerts.basicAlert("Ok", 'The category has been saved', "success")			
+						alerts.basicAlert("Ok", 'The category has been saved', "success")
 
 					},
 
 					err =>{
 
-						this.loadData = false;		
+						this.loadData = false;
 
 						alerts.basicAlert("Error", 'Category saving error', "error")
 
@@ -205,13 +206,13 @@ export class NewCategoriesComponent implements OnInit {
 
     		}else{
 
-				this.loadData = false;		
+				this.loadData = false;
 
     			alerts.basicAlert("Error", 'Invalid Picture', "error")
     		}
 
-    	})	
-	
+    	})
+
 	}
 
 	/*=============================================
@@ -221,7 +222,7 @@ export class NewCategoriesComponent implements OnInit {
 	invalidField(field:string){
 
 		return functions.invalidField(field, this.f, this.formSubmitted);
-		
+
 	}
 
 	/*=============================================
@@ -258,7 +259,7 @@ export class NewCategoriesComponent implements OnInit {
 
 						if(Object.keys(resp).length > 0){
 
-							resolve({category: true}) 
+							resolve({category: true})
 
 						}else{
 							this.urlInput = name;
@@ -283,11 +284,11 @@ export class NewCategoriesComponent implements OnInit {
 	=============================================*/
 
 	viewIcon(e:any){
-		
+
 		this.iconView = e.target.value;
 
-		e.target.value = this.f.controls.icon.value.split('"')[1];	
-	
+		e.target.value = this.f.controls.icon.value.split('"')[1];
+
 	}
 
 }

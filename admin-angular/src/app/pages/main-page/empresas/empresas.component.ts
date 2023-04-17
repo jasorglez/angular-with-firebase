@@ -114,7 +114,7 @@ export class EmpresasComponent implements OnInit {
 
              this.empresas = Object.keys(resp).map(a=> ({
 
-              id: a,
+              idemp: resp[a].idemp ++,
               position: position ++,
               address:resp[a].address,
               city:resp[a].city,

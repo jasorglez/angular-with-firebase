@@ -20,9 +20,27 @@
       <button class="btn btn-navbar" type="submit">
         <i class="fas fa-search"></i>
       </button>
-    </div>
+      </div>
   </div>
 </form>
+
+<button
+class="btn btn-sm btn-yellow mr-3">
+<i class="fas fa-pencil-alt"></i>
+</button>
+
+
+<!---3 Realizar el `Combo Box-->
+<p> {{ emailc }} </p>
+<h4> Company x User </h4>
+
+<select name="Company" (change)="branchChanges($event)" >
+  <option>Select</option>
+  <option [value]="comp.id_company" *ngFor="let comp of companysList">
+         {{comp.namecompany}}
+  </option>
+</select>
+
 
 <!-- Right navbar links -->
 <ul class="navbar-nav ml-auto">

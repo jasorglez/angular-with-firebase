@@ -11,7 +11,8 @@ export const environment = {
   urlFiles :'https://github.com/jasorglez/be/blob/main/img/',
   adminFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/index.php?key=AIzaSyAinumxU4a1zPNG4Qbsh1noPWiQBjDQ-IA',
   deleteFiles:'http://localhost/sistemas-angular/marketplace/src/assets/img/delete.php?key=AIzaSyAinumxU4a1zPNG4Qbsh1noPWiQBjDQ-IA',
-  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyAinumxU4a1zPNG4Qbsh1noPWiQBjDQ-IA'
+  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyAinumxU4a1zPNG4Qbsh1noPWiQBjDQ-IA',
+
 };
 
 /*

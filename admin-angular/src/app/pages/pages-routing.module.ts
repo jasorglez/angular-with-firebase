@@ -25,6 +25,8 @@ const routes: Routes = [
 	  	{ path: 'disputes', loadChildren: () => import('./main-page/disputes/disputes.module').then(m=>m.DisputesModule)},
 	  	{ path: 'messages', loadChildren: () => import('./main-page/messages/messages.module').then(m=>m.MessagesModule)},
       { path: 'empresas', loadChildren: () => import('./main-page/empresas/empresas.module').then(m=>m.EmpresasModule)},
+      { path: 'branchs', loadChildren: () => import('./main-page/branchs/branchs.module').then(m=>m.BranchsModule)},
+
 	  	{ path: '**', component: Error404Component}
 	]}
 
